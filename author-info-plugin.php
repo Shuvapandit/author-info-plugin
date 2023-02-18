@@ -6,7 +6,11 @@
  * Author: Shuva chakraborty
  * Author URI: https://your-website.com
  */
-
+//Add Css
+function add_author_info_plugin_styles() {
+    wp_enqueue_style( 'author-info-plugin-styles', plugins_url( 'css/sstt-style.css', __FILE__ ) );
+}
+add_action( 'wp_enqueue_scripts', 'add_author_info_plugin_styles' );
 
 // Add author info after every post
 function add_author_info_after_post() {
