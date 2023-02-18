@@ -1,0 +1,28 @@
+<?php
+/**
+ * Plugin Name: Author Info Plugin
+ * Description: Adds author info after every post and provides a shortcode to display it anywhere in the post.
+ * Version: 1.0.0
+ * Author: Shuva chakraborty
+ * Author URI: https://your-website.com
+ */
+
+
+// Add author info after every post
+function add_author_info_after_post() {
+    $author_id = get_the_author_meta('ID');
+    $author_name = get_the_author_meta('display_name');
+    $author_avatar = get_avatar_url($author_id);
+    $author_website = get_the_author_meta('user_url');
+    ?>
+    <div class="author-info">
+        
+        <h3><?php echo esc_html  ($author_name); ?></h3>
+        <img src="<?php echo esc_url($author_avatar); ?>" alt="<?php echo esc_attr($author_name); ?>" />
+        <p><?php echo esc_html($author_website); ?></p>
+    </div>
+    <?php
+}
+add_action('wp_footer', 'add_author_info_after_post');
+
+
